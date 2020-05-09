@@ -9,10 +9,8 @@ if __name__ == "__main__":
     print("Llamada con Adb y UI")
     print("Empezar Prueba")
     print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-    print()
     try:
         _serial = read_device()
-        _serial = 'Hola'
         _device = Device(_serial)
         adb_ui_call(phone_number, 3, _device, _serial)
     except Exception as ex:

@@ -4,7 +4,7 @@ from datetime import datetime
 from ui_utils import adb_ui_wifi
 
 if __name__ == "__main__":
-    print("Encender Wifi")
+    print("Apagar Wifi")
     print("Empezar Prueba")
     print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
     try:
