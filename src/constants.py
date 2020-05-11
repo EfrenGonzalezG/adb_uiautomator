@@ -8,6 +8,7 @@ set_operators = ['+', '-', '*', '/']
 
 dict_keyboard_calculator = {
     '+': 'add',     '-': 'sub',     '*': 'mul',     '/': 'div',     '.': 'dot',     '=': 'equal',
+    '(': 'parenthesis',     ')': 'parenthesis'
 }
 
 dict_adb_status = {

@@ -54,11 +54,327 @@ data = [
     },
     {
         'function': 'adb_call',
+        'description': 'Telefono local',
+        'automated': 'False',
         'parameters': {
             'device_id': '1',
-            'number_phone': '123',
+            'number_phone': '4269026',
             'seconds': '3'
-        }
+        },
+        'expected result': 'Llamada realizada exitosamente a 4269026'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono nacional',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '4494269026',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a 4494269026'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono internacional',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '+524494269026',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a +524494269026'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono con #',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '#321',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a #123'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono con *',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '*321',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a *123'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono vacio',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '',
+            'seconds': '3'
+        },
+        'expected result': 'Numero de telefono invalido'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono con letras',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '123abc',
+            'seconds': '3'
+        },
+        'expected result': 'Numero de telefono invalido'
+    },
+    {
+        'function': 'adb_call',
+        'description': 'Telefono con simbolos raros',
+        'automated': 'False',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '123!%',
+            'seconds': '3'
+        },
+        'expected result': 'Numero de telefono invalido'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono local',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '4269026',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a 4269026'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono nacional',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '4494269026',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a 4494269026'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono internacional',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '+524494269026',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a +524494269026'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono con #',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '#321',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a #123'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono con *',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '*321',
+            'seconds': '3'
+        },
+        'expected result': 'Llamada realizada exitosamente a *123'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono vacio',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '',
+            'seconds': '3'
+        },
+        'expected result': 'Numero de telefono invalido'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono con letras',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '123abc',
+            'seconds': '3'
+        },
+        'expected result': 'Numero de telefono invalido'
+    },
+    {
+        'function': 'adb_ui_call',
+        'description': 'Telefono con simbolos raros',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'number_phone': '123!%',
+            'seconds': '3'
+        },
+        'expected result': 'Numero de telefono invalido'
+    },
+    {
+        'function': 'adb_ui_wifi',
+        'description': 'Apagar wifi con wifi encendido',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'status': '0',
+        },
+        'expected result': 'Estatus de Wifi cambiado a Off'
+    },
+    {
+        'function': 'adb_ui_wifi',
+        'description': 'Apagar wifi con wifi apagado',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'status': '0',
+        },
+        'expected result': 'Wifi se encuentra Off - No es necesario Turn Off'
+    },
+    {
+        'function': 'adb_ui_wifi',
+        'description': 'Encender wifi con wifi apagado',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'status': '1',
+        },
+        'expected result': 'Estatus de Wifi cambiado a On'
+    },
+    {
+        'function': 'adb_ui_wifi',
+        'description': 'Encender wifi con wifi encendido',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'status': '1',
+        },
+        'expected result': 'Wifi se encuentra On - No es necesario Turn On'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Sumar dos numeros negativos',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '-3',
+            'operator': '+',
+            'operand2': '-2'
+        },
+        'expected result': 'Resultado correcto de operacion'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Dividir entre 0',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '3',
+            'operator': '/',
+            'operand2': '0'
+        },
+        'expected result': 'No se puede dividir entre 0'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Operador invalido',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '3',
+            'operator': 'x',
+            'operand2': '0'
+        },
+        'expected result': 'Operador invalido'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Operando 1 invalido',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '3e1',
+            'operator': '+',
+            'operand2': '2'
+        },
+        'expected result': 'El valor del operando 1 no es valido'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Operando 1 invalido',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '3',
+            'operator': '+',
+            'operand2': '2f1'
+        },
+        'expected result': 'El valor del operando 2 no es valido'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Sumar dos numeros',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '4',
+            'operator': '+',
+            'operand2': '5'
+        },
+        'expected result': 'Resultado correcto de operacion'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Restar dos numeros',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '4',
+            'operator': '-',
+            'operand2': '5'
+        },
+        'expected result': 'Resultado correcto de operacion'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Multiplicar dos numeros',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '4',
+            'operator': '*',
+            'operand2': '5'
+        },
+        'expected result': 'Resultado correcto de operacion'
+    },
+    {
+        'function': 'adb_ui_calculator',
+        'description': 'Dividir dos numeros',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'operand1': '4',
+            'operator': '/',
+            'operand2': '5'
+        },
+        'expected result': 'Resultado correcto de operacion'
     },
 ]
 

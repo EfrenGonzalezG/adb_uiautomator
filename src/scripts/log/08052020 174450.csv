@@ -1,8 +1,0 @@
-test,function,description,automated,parameters,expected result,begin,end
-TC001,read_devices,Ningun dispositivo conectado,False,{},No se encontro ningun dispositivo,08/05/2020 17:44:50,08/05/2020 17:44:50
-TC002,read_devices,Un dispositivo conectado,True,{},Serial 1 = R28M410479V,08/05/2020 17:44:50,08/05/2020 17:44:50
-TC003,read_devices,Dos o mas dispositivos conectados,False,{},?,08/05/2020 17:44:50,08/05/2020 17:44:50
-TC004,read_device,Un dispositivo conectado,True,{'device_id': '1'},Serial = R28M410479V,08/05/2020 17:44:50,08/05/2020 17:44:50
-TC005,read_device,Un dispositivo conectado,True,{'device_id': '10'},list index out of range,08/05/2020 17:44:50,08/05/2020 17:44:50
-TC006,read_device,Ningun dispositivo conectado,False,{'device_id': '10'},No se encontro ningun dispositivo,08/05/2020 17:44:50,08/05/2020 17:44:50
-TC007,adb_call,,,"{'seconds': '3', 'number_phone': '123', 'device_id': '1'}",,08/05/2020 17:44:50,08/05/2020 17:44:50
