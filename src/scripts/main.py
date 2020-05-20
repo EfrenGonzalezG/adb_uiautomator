@@ -1,10 +1,12 @@
 import os
 from uiautomator import Device
 from adb_utils import read_device, read_devices, adb_call
-from ui_utils import adb_ui_call, adb_ui_wifi, adb_ui_calculator
+from ui_utils import adb_ui_call, adb_ui_wifi, adb_ui_calculator, adb_ui_voice_message
 from data import data
 from datetime import datetime
 from logger import create_file, write_file
+from twilio_utils import make_call
+import time
 
 
 def test_read_devices(case_data, log_result):
@@ -24,14 +26,14 @@ def test_adb_call(case_data, log_result):
 def test_adb_ui_call(case_data, log_result):
     serial = read_device(case_data['parameters']['device_id'], debug=False)
     device = Device(serial)
-    adb_ui_call(case_data['parameters']['number_phone'], float(case_data['parameters']['seconds']), device, serial,
+    adb_ui_call(case_data['parameters']['number_phone'], float(case_data['parameters']['seconds']), device,
                 debug=True, log_file=log_result)
 
 
 def test_adb_ui_wifi(case_data, log_result):
     serial = read_device(case_data['parameters']['device_id'], debug=False)
     device = Device(serial)
-    adb_ui_wifi(int(case_data['parameters']['status']), device, serial,
+    adb_ui_wifi(int(case_data['parameters']['status']), device,
                 debug=True, log_file=log_result)
 
 
@@ -39,8 +41,16 @@ def test_adb_ui_calculator(case_data, log_result):
     serial = read_device(case_data['parameters']['device_id'], debug=False)
     device = Device(serial)
     adb_ui_calculator(case_data['parameters']['operand1'], case_data['parameters']['operator'],
-                      case_data['parameters']['operand2'], device, serial,
+                      case_data['parameters']['operand2'], device,
                       debug=True, log_file=log_result)
+
+
+def test_adb_ui_voice_message(case_data, log_result):
+    serial = read_device(case_data['parameters']['device_id'], debug=False)
+    device = Device(serial)
+    make_call(case_data['parameters']['message'], case_data['parameters']['to'], case_data['parameters']['from'])
+    time.sleep(120)
+    adb_ui_voice_message(device, debug=True, log_file=log_result)
 
 
 def main():
@@ -52,7 +62,7 @@ def main():
     i = 0
     for case in data:
         begin = str(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-        if case['automated'] == 'True':
+        if case['automated'] == 'True' and i == 35:
             try:
                 print i
                 print case['function']
@@ -68,6 +78,8 @@ def main():
                     test_adb_ui_wifi(case, log_result)
                 elif case['function'] == 'adb_ui_calculator':
                     test_adb_ui_calculator(case, log_result)
+                elif case['function'] == 'test_adb_ui_voice_message':
+                    test_adb_ui_voice_message(case, log_result)
             except Exception as ex:
                 print ex
         else:

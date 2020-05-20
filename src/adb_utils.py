@@ -5,7 +5,7 @@ from constants import dict_adb_status, dict_keyboard_call
 from logger import write_file
 
 
-def read_device(j, debug=True, log_file=os.path.join('log', 'log.csv')):
+def read_device(j=1, debug=False, log_file=os.path.join('log', 'log.csv')):
     i = int(j)
     if i < 1:
         if debug:
@@ -23,7 +23,7 @@ def read_device(j, debug=True, log_file=os.path.join('log', 'log.csv')):
     return serial
 
 
-def read_devices(debug=True, log_file=os.path.join('log', 'log.csv')):
+def read_devices(debug=False, log_file=os.path.join('log', 'log.csv')):
     s = ''
     serials = []
     output = check_output(['adb', 'devices']).splitlines()
@@ -41,7 +41,7 @@ def read_devices(debug=True, log_file=os.path.join('log', 'log.csv')):
     return serials
 
 
-def adb_call(phone_number, seconds, serial, debug=True, log_file=os.path.join('log', 'log.csv')):
+def adb_call(phone_number, seconds, serial, debug=False, log_file=os.path.join('log', 'log.csv')):
     for i in range(len(phone_number)):
         if not (phone_number[i] in dict_keyboard_call):
             if debug:

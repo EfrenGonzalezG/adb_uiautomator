@@ -376,6 +376,25 @@ data = [
         },
         'expected result': 'Resultado correcto de operacion'
     },
+    {
+        'function': 'test_adb_ui_voice_message',
+        'description': 'Realizar una llamada desde twilio, verificar que el telefono reciba un mensaje de voz',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'message': 'Tengo que ser siempre el mejor '
+                       'Mejor que nadie mas '
+                       'Atraparlos mi prueba es '
+                       'Entrenarlos mi ideal '
+                       'Yo viajare de aqui alla '
+                       'Buscando hasta el fin '
+                       'Oh pokemon yo te entendere '
+                       'Tu poder interior',
+            'to': '+524494269026',
+            'from': '+12183327195',
+        },
+        'expected result': 'Mensaje de voz encontrado'
+    },
 ]
 
 

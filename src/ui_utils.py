@@ -6,7 +6,7 @@ from constants import dict_keyboard_call, dict_keyboard_calculator, dict_ui_stat
 from logger import write_file
 
 
-def adb_ui_call(phone_number, seconds, device, serial, debug=True, log_file=os.path.join('log', 'log.csv')):
+def adb_ui_call(phone_number, seconds, device, debug=False, log_file=os.path.join('log', 'log.csv')):
     for i in range(len(phone_number)):
         if not (phone_number[i] in dict_keyboard_call):
             if debug:
@@ -35,7 +35,7 @@ def adb_ui_call(phone_number, seconds, device, serial, debug=True, log_file=os.p
     device.press.home()
 
 
-def adb_ui_wifi(status, device, serial, debug=True, log_file=os.path.join('log', 'log.csv')):
+def adb_ui_wifi(status, device, debug=False, log_file=os.path.join('log', 'log.csv')):
     if not (status in dict_ui_status):
         if debug:
             write_file(log_file, ['result'], {'result': "Valor de estatus invalido"})
@@ -57,12 +57,13 @@ def adb_ui_wifi(status, device, serial, debug=True, log_file=os.path.join('log',
             write_file(log_file, ['result'],
                        {'result': "Wifi se encuentra {0} - No es necesario Turn {0}".format(
                            dict_ui_status[status ^ 1])})
+        device.press.home()
         raise ValueError("Wifi se encuentra {0} - No es necesario Turn {0}".format(dict_ui_status[status ^ 1]))
     device.press.home()
 
 
-def adb_ui_calculator(operand1, operator, operand2, device, serial,
-                      debug=True, log_file=os.path.join('log', 'log.csv')):
+def adb_ui_calculator(operand1, operator, operand2, device,
+                      debug=False, log_file=os.path.join('log', 'log.csv')):
     if not (operator in set_operators):
         if debug:
             write_file(log_file, ['result'], {'result': 'Operador invalido'})
@@ -135,5 +136,17 @@ def adb_ui_calculator(operand1, operator, operand2, device, serial,
     else:
         if debug:
             write_file(log_file, ['result'], {'result': "Resultado incorrecto"})
+        device.press.home()
         raise ValueError("Resultado incorrecto")
+    device.press.home()
+
+
+def adb_ui_voice_message(device, debug=False, log_file=os.path.join('log', 'log.csv')):
+    device.open.notification()
+    if device(text='New voicemail', className='android.widget.TextView').exists:
+        if debug:
+            write_file(log_file, ['result'], {'result': "Mensaje de voz encontrado"})
+    else:
+        if debug:
+            write_file(log_file, ['result'], {'result': "No se encontro mensaje de voz"})
     device.press.home()

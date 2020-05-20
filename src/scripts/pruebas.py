@@ -2,10 +2,14 @@ from uiautomator import Device
 from adb_utils import read_device
 from datetime import datetime
 from ui_utils import adb_ui_calculator
+from twilio_utils import make_call
 
-try:
-    _serial = read_device(5)
-    _device = Device(_serial)
-except Exception as ex:
-    print ex
-#adb_ui_calculator(1000000, '*', 1000, _device, _serial)
+make_call("hola hola hola hola hola hola hola hola hola hola hola hola hola hola hola hola hola")
+"""
+device = Device(read_device())
+device.open.notification()
+if device(text='New voicemail', className='android.widget.TextView').exists:
+    print 'yay'
+else:
+    print ':c'
+"""
