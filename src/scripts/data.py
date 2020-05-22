@@ -27,7 +27,7 @@ data = [
     },
     {
         'function': 'read_device',
-        'description': 'Un dispositivo conectado',
+        'description': 'Un dispositivo conectado, pedir primer dispositivo',
         'automated': 'True',
         'parameters': {
             'device_id': '1'
@@ -36,7 +36,7 @@ data = [
     },
     {
         'function': 'read_device',
-        'description': 'Un dispositivo conectado',
+        'description': 'Un dispositivo conectado, pedir decimo dispositivo',
         'automated': 'True',
         'parameters': {
             'device_id': '10'
@@ -378,6 +378,16 @@ data = [
     },
     {
         'function': 'test_adb_ui_voice_message',
+        'description': 'Verificar que el telefono no tenga un mensaje de voz',
+        'automated': 'True',
+        'parameters': {
+            'device_id': '1',
+            'message': '',
+        },
+        'expected result': 'No se encontro mensaje de voz'
+    },
+    {
+        'function': 'test_adb_ui_voice_message',
         'description': 'Realizar una llamada desde twilio, verificar que el telefono reciba un mensaje de voz',
         'automated': 'True',
         'parameters': {
@@ -394,6 +404,21 @@ data = [
             'from': '+12183327195',
         },
         'expected result': 'Mensaje de voz encontrado'
+    },
+    {
+        'function': 'test_twilio_voice_message',
+        'description': 'Verificar el contenido del mensaje de voz',
+        'automated': 'False',
+        'parameters': {
+        },
+        'expected result': 'Tengo que ser siempre el mejor '
+                           'Mejor que nadie mas '
+                           'Atraparlos mi prueba es '
+                           'Entrenarlos mi ideal '
+                           'Yo viajare de aqui alla '
+                           'Buscando hasta el fin '
+                           'Oh pokemon yo te entendere '
+                           'Tu poder interior',
     },
 ]
 

@@ -1,0 +1,39 @@
+test,function,description,automated,parameters,expected result,begin,end
+TC001,read_devices,Ningun dispositivo conectado,False,{},No se encontro ningun dispositivo,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC002,read_devices,Un dispositivo conectado,True,{},Serial 1 = R28M410479V-,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC003,read_devices,Dos o mas dispositivos conectados,False,{},?,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC004,read_device,"Un dispositivo conectado, pedir primer dispositivo",True,{'device_id': '1'},Serial = R28M410479V,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC005,read_device,"Un dispositivo conectado, pedir decimo dispositivo",True,{'device_id': '10'},list index out of range,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC006,read_device,Ningun dispositivo conectado,False,{'device_id': '10'},No se encontro ningun dispositivo,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC007,adb_call,Telefono local,False,"{'seconds': '3', 'number_phone': '4269026', 'device_id': '1'}",Llamada realizada exitosamente a 4269026,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC008,adb_call,Telefono nacional,False,"{'seconds': '3', 'number_phone': '4494269026', 'device_id': '1'}",Llamada realizada exitosamente a 4494269026,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC009,adb_call,Telefono internacional,False,"{'seconds': '3', 'number_phone': '+524494269026', 'device_id': '1'}",Llamada realizada exitosamente a +524494269026,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC010,adb_call,Telefono con #,False,"{'seconds': '3', 'number_phone': '#321', 'device_id': '1'}",Llamada realizada exitosamente a #123,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC011,adb_call,Telefono con *,False,"{'seconds': '3', 'number_phone': '*321', 'device_id': '1'}",Llamada realizada exitosamente a *123,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC012,adb_call,Telefono vacio,False,"{'seconds': '3', 'number_phone': '', 'device_id': '1'}",Numero de telefono invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC013,adb_call,Telefono con letras,False,"{'seconds': '3', 'number_phone': '123abc', 'device_id': '1'}",Numero de telefono invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC014,adb_call,Telefono con simbolos raros,False,"{'seconds': '3', 'number_phone': '123!%', 'device_id': '1'}",Numero de telefono invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC015,adb_ui_call,Telefono local,True,"{'seconds': '3', 'number_phone': '4269026', 'device_id': '1'}",Llamada realizada exitosamente a 4269026,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC016,adb_ui_call,Telefono nacional,True,"{'seconds': '3', 'number_phone': '4494269026', 'device_id': '1'}",Llamada realizada exitosamente a 4494269026,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC017,adb_ui_call,Telefono internacional,True,"{'seconds': '3', 'number_phone': '+524494269026', 'device_id': '1'}",Llamada realizada exitosamente a +524494269026,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC018,adb_ui_call,Telefono con #,True,"{'seconds': '3', 'number_phone': '#321', 'device_id': '1'}",Llamada realizada exitosamente a #123,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC019,adb_ui_call,Telefono con *,True,"{'seconds': '3', 'number_phone': '*321', 'device_id': '1'}",Llamada realizada exitosamente a *123,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC020,adb_ui_call,Telefono vacio,True,"{'seconds': '3', 'number_phone': '', 'device_id': '1'}",Numero de telefono invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC021,adb_ui_call,Telefono con letras,True,"{'seconds': '3', 'number_phone': '123abc', 'device_id': '1'}",Numero de telefono invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC022,adb_ui_call,Telefono con simbolos raros,True,"{'seconds': '3', 'number_phone': '123!%', 'device_id': '1'}",Numero de telefono invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC023,adb_ui_wifi,Apagar wifi con wifi encendido,True,"{'status': '0', 'device_id': '1'}",Estatus de Wifi cambiado a Off,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC024,adb_ui_wifi,Apagar wifi con wifi apagado,True,"{'status': '0', 'device_id': '1'}",Wifi se encuentra Off - No es necesario Turn Off,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC025,adb_ui_wifi,Encender wifi con wifi apagado,True,"{'status': '1', 'device_id': '1'}",Estatus de Wifi cambiado a On,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC026,adb_ui_wifi,Encender wifi con wifi encendido,True,"{'status': '1', 'device_id': '1'}",Wifi se encuentra On - No es necesario Turn On,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC027,adb_ui_calculator,Sumar dos numeros negativos,True,"{'operator': '+', 'operand2': '-2', 'operand1': '-3', 'device_id': '1'}",Resultado correcto de operacion,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC028,adb_ui_calculator,Dividir entre 0,True,"{'operator': '/', 'operand2': '0', 'operand1': '3', 'device_id': '1'}",No se puede dividir entre 0,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC029,adb_ui_calculator,Operador invalido,True,"{'operator': 'x', 'operand2': '0', 'operand1': '3', 'device_id': '1'}",Operador invalido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC030,adb_ui_calculator,Operando 1 invalido,True,"{'operator': '+', 'operand2': '2', 'operand1': '3e1', 'device_id': '1'}",El valor del operando 1 no es valido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC031,adb_ui_calculator,Operando 1 invalido,True,"{'operator': '+', 'operand2': '2f1', 'operand1': '3', 'device_id': '1'}",El valor del operando 2 no es valido,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC032,adb_ui_calculator,Sumar dos numeros,True,"{'operator': '+', 'operand2': '5', 'operand1': '4', 'device_id': '1'}",Resultado correcto de operacion,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC033,adb_ui_calculator,Restar dos numeros,True,"{'operator': '-', 'operand2': '5', 'operand1': '4', 'device_id': '1'}",Resultado correcto de operacion,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC034,adb_ui_calculator,Multiplicar dos numeros,True,"{'operator': '*', 'operand2': '5', 'operand1': '4', 'device_id': '1'}",Resultado correcto de operacion,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC035,adb_ui_calculator,Dividir dos numeros,True,"{'operator': '/', 'operand2': '5', 'operand1': '4', 'device_id': '1'}",Resultado correcto de operacion,21/05/2020 20:03:43,21/05/2020 20:03:43
+TC036,test_adb_ui_voice_message,Verificar que el telefono no tenga un mensaje de voz,True,"{'message': '', 'device_id': '1'}",No se encontro mensaje de voz,21/05/2020 20:03:43,21/05/2020 20:04:10
+TC037,test_adb_ui_voice_message,"Realizar una llamada desde twilio, verificar que el telefono reciba un mensaje de voz",True,"{'to': '+524494269026', 'message': 'Tengo que ser siempre el mejor Mejor que nadie mas Atraparlos mi prueba es Entrenarlos mi ideal Yo viajare de aqui alla Buscando hasta el fin Oh pokemon yo te entendere Tu poder interior', 'from': '+12183327195', 'device_id': '1'}",Mensaje de voz encontrado,21/05/2020 20:04:10,21/05/2020 20:04:10
+TC038,test_twilio_voice_message,Verificar el contenido del mensaje de voz,False,{},Tengo que ser siempre el mejor Mejor que nadie mas Atraparlos mi prueba es Entrenarlos mi ideal Yo viajare de aqui alla Buscando hasta el fin Oh pokemon yo te entendere Tu poder interior,21/05/2020 20:04:10,21/05/2020 20:04:10

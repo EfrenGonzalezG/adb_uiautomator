@@ -145,8 +145,10 @@ def adb_ui_voice_message(device, debug=False, log_file=os.path.join('log', 'log.
     device.open.notification()
     if device(text='New voicemail', className='android.widget.TextView').exists:
         if debug:
+            print("Mensaje de voz encontrado")
             write_file(log_file, ['result'], {'result': "Mensaje de voz encontrado"})
     else:
         if debug:
+            print("No se encontro mensaje de voz")
             write_file(log_file, ['result'], {'result': "No se encontro mensaje de voz"})
     device.press.home()

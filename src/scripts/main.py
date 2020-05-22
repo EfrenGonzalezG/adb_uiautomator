@@ -48,8 +48,9 @@ def test_adb_ui_calculator(case_data, log_result):
 def test_adb_ui_voice_message(case_data, log_result):
     serial = read_device(case_data['parameters']['device_id'], debug=False)
     device = Device(serial)
-    make_call(case_data['parameters']['message'], case_data['parameters']['to'], case_data['parameters']['from'])
-    time.sleep(120)
+    if len(case_data['parameters']['message']) > 0:
+        make_call(case_data['parameters']['message'], case_data['parameters']['to'], case_data['parameters']['from'])
+        time.sleep(120)
     adb_ui_voice_message(device, debug=True, log_file=log_result)
 
 
@@ -60,9 +61,10 @@ def main():
     fieldnames = ['test', 'function', 'description', 'automated', 'parameters', 'expected result', 'begin', 'end']
     create_file(log_file, fieldnames)
     i = 0
+    print('inicio ' + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
     for case in data:
         begin = str(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-        if case['automated'] == 'True' and i == 35:
+        if case['automated'] == 'True':
             try:
                 print i
                 print case['function']
@@ -93,7 +95,7 @@ def main():
         case['begin'] = begin
         case['end'] = end
         write_file(log_file, fieldnames, case)
-
+    print('fin ' + str(datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
 
 if __name__ == "__main__":
     main()
